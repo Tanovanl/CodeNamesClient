@@ -1,0 +1,134 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  background: url("./assets/bg_colorful.jpg");
+  min-width: 320px;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.all-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.all-games {
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: fit-content;
+  border: 5px solid #212121;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.card form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.host-form label {
+  font-weight: bold;
+}
+
+.card input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+
+#host-button {
+  padding: 10px 20px;
+  background-color: #202149;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#host-button:hover {
+  background-color: #242875;
+}
+
