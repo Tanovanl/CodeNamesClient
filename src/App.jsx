@@ -9,6 +9,7 @@ function App() {
     <>
         <Board/>
         <Card word="Hello" color="BLUE" />
+        <Card word="TEST" color="RED" />
     </>
   )
 }
