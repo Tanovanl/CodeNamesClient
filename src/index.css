@@ -151,11 +151,13 @@ header p {
 }
 
 .card-word {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
   position: absolute;
   color: #000000;
   font-size: 2em;
   text-shadow: white 5px 5px 10px;
-
+  Top: 25%;
 }
 
 

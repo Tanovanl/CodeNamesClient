@@ -5,7 +5,7 @@ function Card(props){
 
     return(
         <div className="word-card">
-            <img className='card-img' alt={props.color + "card"} src={"./src/assets/card-" + props.color + ".png"}/>
+            <img className='card-img' alt={props.color + "card"} src={"./src/assets/card-false-" + props.color + ".png"}/>
             <p className="card-word">{props.word}</p>
         </div>
     )
