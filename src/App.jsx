@@ -8,10 +8,7 @@ function App() {
   return (
     <>
         <Board/>
-        <Card word="Hello" color="BLUE" />
-        <Card word="TEST" color="RED" />
-        <Card word="TEST" color="GRAY" />
-        <Card word="TEST" color="BLACK" />
+
     </>
   )
 }
