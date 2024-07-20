@@ -133,8 +133,8 @@ header p {
 }
 
 .card-img {
-  width: 200px;
-  height: 120px;
+  width: 185px;
+  height: 110px;
   border-radius: 5%;
   border: 3px solid #212121;
 }
@@ -155,8 +155,31 @@ header p {
   font-weight: bold;
   position: absolute;
   color: #000000;
-  font-size: 2em;
-  Top: 25%;
+  font-size: 1.5em;
+  Top: 35%;
 }
 
+.board-div {
+  grid-column: 2;
+  max-height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.board h1 {
+  font-size: 5em;
+  margin-top: 0;
+  font-weight: bold;
+  text-align: center;
+}
 

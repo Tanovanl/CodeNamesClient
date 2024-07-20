@@ -29,7 +29,9 @@ function JoinGame(){
     const joinGame = async (gameId) => {
         const url = `/game/${gameId}/player/${playerName}`;
         console.log(url);
-        await apiCall(url, "POST");
+        const daata = await apiCall(url, "POST");
+        localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
+        localStorage.setItem('playerName', JSON.stringify(data.playerName));
     }
 
     if (loading) return <div id="join-div" className="card"> <div>Loading...</div> </div>

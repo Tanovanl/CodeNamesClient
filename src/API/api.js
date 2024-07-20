@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://194.15.36.221:8080';
 
 const apiCall = async (endpoint, method = 'GET', body = null, headers = {}) => {
     const url = `${BASE_URL}${endpoint}`;
