@@ -27,11 +27,9 @@ function Board(){
     const getPlayerGameInfo = async () => {
         let url = `/game/${localStorage.getItem('gameId')}/player/${localStorage.getItem('playerName')}`;
         url = url.replace(/"|'/g, "");
-        console.log(url);
         const data = await apiCall(url, "GET");
         return data.role;
     }
-    console.log(role);
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>Error: {error}</div>;
