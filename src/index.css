@@ -185,6 +185,7 @@ header p {
 
 
 .team-card {
+  flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,6 +214,7 @@ header p {
 
 .container {
   display: flex;
-  justify-content: space-around; /* This will add some space around each item */
+  justify-content: space-around;
+  align-items: center;
 }
 
