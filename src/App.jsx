@@ -12,6 +12,8 @@ function App() {
         <div className="container">
             <TeamJoin team="RED"/>
             <Board/>
+
+
             <TeamJoin team="BLUE"/>
         </div>
     </>

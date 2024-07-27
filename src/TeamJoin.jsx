@@ -12,6 +12,7 @@ function TeamJoin(props) {
         console.log(team);
     };
 
+
     return (
         <div className="team-card" style={{backgroundColor: props.team}}>
             <h2 className={props.team}>{props.team} Team</h2>
