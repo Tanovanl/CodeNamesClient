@@ -11,7 +11,7 @@ function Board(){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await apiCall('/game/prefix-te2est', "GET");
+                const result = await apiCall('/game/tano4-tanogame2', "GET");
                 setRole(await getPlayerGameInfo());
                 setCards(result.cards);
             } catch (error) {

@@ -2,6 +2,22 @@ import React, { useState, useEffect } from 'react';
 import apiCall from './API/api';
 
 function TeamJoin(props) {
+    const [redOperativeExists, setRedOperativeExists] = useState(false);
+    const [redSpyMasterExists, setRedSpyMasterExists] = useState(false);
+    const [blueOperativeExists, setBlueOperativeExists] = useState(false);
+    const [blueSpyMasterExists, setBlueSpyMasterExists] = useState(false);
+
+    useEffect(() => {
+        const fetchPlayers = async () => {
+            const gameId = JSON.parse(localStorage.getItem('gameId'));
+            const players = await apiCall(`/game/${gameId}`);
+            setRedOperativeExists(players.some(player => player.team === 'RED' && player.role === 'OPERATIVE'));
+            setRedSpyMasterExists(players.some(player => player.team === 'RED' && player.role === 'SPYMASTER'));
+            setBlueOperativeExists(players.some(player => player.team === 'BLUE' && player.role === 'OPERATIVE'));
+            setBlueSpyMasterExists(players.some(player => player.team === 'BLUE' && player.role === 'SPYMASTER'));
+        };
+        fetchPlayers();
+    }, []);
 
     const handleButtonClick = async (role, event) => {
         event.preventDefault(); // Prevent form from submitting
@@ -12,13 +28,14 @@ function TeamJoin(props) {
         console.log(team);
     };
 
-
     return (
         <div className="team-card" style={{backgroundColor: props.team}}>
             <h2 className={props.team}>{props.team} Team</h2>
             <form>
-                <button className={props.team} onClick={(event) => handleButtonClick('Operative', event)}>Operative</button>
-                <button className={props.team} onClick={(event) => handleButtonClick('SpyMaster', event)}>Spy Master</button>
+                {props.team === 'RED' && !redOperativeExists && <button className={props.team} onClick={(event) => handleButtonClick('Operative', event)}>Operative</button>}
+                {props.team === 'RED' && !redSpyMasterExists && <button className={props.team} onClick={(event) => handleButtonClick('SpyMaster', event)}>Spy Master</button>}
+                {props.team === 'BLUE' && !blueOperativeExists && <button className={props.team} onClick={(event) => handleButtonClick('Operative', event)}>Operative</button>}
+                {props.team === 'BLUE' && !blueSpyMasterExists && <button className={props.team} onClick={(event) => handleButtonClick('SpyMaster', event)}>Spy Master</button>}
             </form>
         </div>
     );
