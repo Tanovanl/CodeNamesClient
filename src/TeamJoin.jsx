@@ -10,7 +10,8 @@ function TeamJoin(props) {
     useEffect(() => {
         const fetchPlayers = async () => {
             const gameId = JSON.parse(localStorage.getItem('gameId'));
-            const players = await apiCall(`/game/${gameId}`);
+            let players = await apiCall(`/game/${gameId}`);
+            players = players.players;
             setRedOperativeExists(players.some(player => player.team === 'RED' && player.role === 'OPERATIVE'));
             setRedSpyMasterExists(players.some(player => player.team === 'RED' && player.role === 'SPYMASTER'));
             setBlueOperativeExists(players.some(player => player.team === 'BLUE' && player.role === 'OPERATIVE'));
