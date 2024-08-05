@@ -1,5 +1,7 @@
 # Project Title: Code Names
 
+- You can visit the server at: https://github.com/Tanovanl/CodeNamesServer
+
 ## Description
 
 Code Names is a web application developed using JavaScript, npm, and React. It is a single-developer project, currently being developed by Tanovanl. The application is designed to be interactive and user-friendly.
