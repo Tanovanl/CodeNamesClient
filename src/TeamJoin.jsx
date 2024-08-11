@@ -8,22 +8,25 @@ function TeamJoin(props) {
     const [blueSpyMaster, setBlueSpyMaster] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
+    const fetchPlayers = async () => {
+        const gameId = JSON.parse(localStorage.getItem('gameId'));
+        let players = await apiCall(`/game/${gameId}`);
+        players = players.players;
+        const redOperativeFind = players.find(player => player.team === 'RED' && player.role === 'OPERATIVE');
+        const redSpyMasterFind = players.find(player => player.team === 'RED' && player.role === 'SPYMASTER');
+        const blueOperativeFind = players.find(player => player.team === 'BLUE' && player.role === 'OPERATIVE');
+        const blueSpyMasterFind = players.find(player => player.team === 'BLUE' && player.role === 'SPYMASTER');
+        setRedOperative(redOperativeFind ? redOperativeFind.playerName : '');
+        setRedSpyMaster(redSpyMasterFind ? redSpyMasterFind.playerName : '');
+        setBlueOperative(blueOperativeFind ? blueOperativeFind.playerName : '');
+        setBlueSpyMaster(blueSpyMasterFind ? blueSpyMasterFind.playerName : '');
+        setIsLoading(false);
+    };
+
     useEffect(() => {
-        const fetchPlayers = async () => {
-            const gameId = JSON.parse(localStorage.getItem('gameId'));
-            let players = await apiCall(`/game/${gameId}`);
-            players = players.players;
-            const redOperativeFind = players.find(player => player.team === 'RED' && player.role === 'OPERATIVE');
-            const redSpyMasterFind = players.find(player => player.team === 'RED' && player.role === 'SPYMASTER');
-            const blueOperativeFind = players.find(player => player.team === 'BLUE' && player.role === 'OPERATIVE');
-            const blueSpyMasterFind = players.find(player => player.team === 'BLUE' && player.role === 'SPYMASTER');
-            setRedOperative(redOperativeFind ? redOperativeFind.playerName : '');
-            setRedSpyMaster(redSpyMasterFind ? redSpyMasterFind.playerName : '');
-            setBlueOperative(blueOperativeFind ? blueOperativeFind.playerName : '');
-            setBlueSpyMaster(blueSpyMasterFind ? blueSpyMasterFind.playerName : '');
-            setIsLoading(false);
-        };
         fetchPlayers();
+        const intervalId = setInterval(fetchPlayers, 1000);
+        return () => clearInterval(intervalId);
     }, []);
 
     const handleButtonClick = async (role, event) => {
@@ -32,6 +35,7 @@ function TeamJoin(props) {
         const playerName = JSON.parse(localStorage.getItem('playerName'));
         await apiCall(`/game/${gameId}/player/${playerName}/team/${props.team.toUpperCase()}`, 'POST');
         await apiCall(`/game/${gameId}/player/${playerName}/role/${role.toUpperCase()}`, 'POST');
+        fetchPlayers();
     };
 
     if (isLoading) {
