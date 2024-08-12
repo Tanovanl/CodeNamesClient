@@ -159,6 +159,10 @@ header p {
   Top: 35%;
 }
 
+.word-card.selected {
+  border: 2px solid #646cff;
+}
+
 .board-div {
   grid-column: 2;
   max-height: 60vh;
