@@ -160,8 +160,8 @@ header p {
 }
 
 .word-card.selected {
-  background-color: rgba(100, 108, 255, 0.2);
-  box-shadow: 0 20px 20px #646cff;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 0px 20px #000000;
 }
 
 .board-div {
