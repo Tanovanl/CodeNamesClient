@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
-
-function Card({ word, color, revealed }) {
-    const [selected, setSelected] = useState(false);
-
+function Card({ word, color, revealed, selected, selectCard }) {
     const handleClick = () => {
-        setSelected(!selected);
+        selectCard();
     };
 
     return (

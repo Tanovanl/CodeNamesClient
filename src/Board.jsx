@@ -7,6 +7,11 @@ function Board(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [cards, setCards] = useState([]);
+    const [selectedCard, setSelectedCard] = useState(null); // Add this line
+
+    const selectCard = (index) => { // Add this function
+        setSelectedCard(index);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,7 +47,13 @@ function Board(){
             <h1>Board</h1>
             <div className="board-div">
                 {cards.map((card, index) => (
-                    card.revealed ? <Card key={index} word={card.word} color={card.color} revealed={true} /> : role === "SPYMASTER" ? <Card key={index} word={card.word} color={card.color} /> : <Card key={index} word={card.word} color="GRAY" revealed={false}/>
+                    <div onClick={() => selectCard(index)}>
+                        {card.revealed ?
+                            <Card key={index} word={card.word} color={card.color} revealed={true} selected={selectedCard === index} /> : role === "SPYMASTER" ?
+                                <Card key={index} word={card.word} color={card.color} selected={selectedCard === index} /> :
+                                <Card key={index} word={card.word} color="GRAY" revealed={false} selected={selectedCard === index} />
+                        }
+                    </div>
                 ))}
             </div>
         </div>
