@@ -9,7 +9,7 @@ function Board(){
     const [cards, setCards] = useState([]);
     const [selectedCard, setSelectedCard] = useState(null); // Add this line
 
-    const selectCard = (index) => { // Add this function
+    const selectCard = (index) => {
         setSelectedCard(index);
     };
 
