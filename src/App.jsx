@@ -34,7 +34,6 @@ function App() {
             {gameExists ? (
                 <div className="container">
                     <TeamJoin team="RED"/>
-                    <Board/>
                     <TeamJoin team="BLUE"/>
                 </div>
             ) : (
