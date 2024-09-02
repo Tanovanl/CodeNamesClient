@@ -14,7 +14,6 @@ function JoinGame(){
         const fetchData = async () => {
             try {
                 const result = await apiCall('/games', "GET");
-                console.log(result);
                 setGames(result.games);
             } catch (error) {
                 setError(error.message);
