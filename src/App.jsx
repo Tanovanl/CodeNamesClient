@@ -26,20 +26,22 @@ function App() {
             }
         };
 
-        checkGame();
+        const intervalId = setInterval(checkGame, 1000);
+
+        return () => clearInterval(intervalId);
     }, []);
 
     return (
         <>
             {gameExists ? (
                 <div className="container">
-                    <TeamJoin team="RED"/>
-                    <TeamJoin team="BLUE"/>
+                    <TeamJoin team="RED" />
+                    <TeamJoin team="BLUE" />
                 </div>
             ) : (
                 <div className="container">
-                    <Host/>
-                    <JoinGame/>
+                    <Host />
+                    <JoinGame />
                 </div>
             )}
         </>
