@@ -9,7 +9,7 @@ function LeaveGame() {
   const leaveGame = () => {
       localStorage.removeItem('gameId');
       localStorage.removeItem('playerName');
-        navigate('/');
+      navigate('/');
   };
 
   return (

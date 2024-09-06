@@ -1,6 +1,8 @@
 import Card from "./Card.jsx";
 import {useEffect, useState} from "react";
 import apiCall from "./API/api.js";
+import {useNavigate} from 'react-router-dom';
+
 
 function Board(){
     const [role, setRole] = useState("");
@@ -8,6 +10,7 @@ function Board(){
     const [error, setError] = useState(null);
     const [cards, setCards] = useState([]);
     const [selectedCard, setSelectedCard] = useState(null); // Add this line
+    const navigate = useNavigate();
 
     const selectCard = (index) => {
         setSelectedCard(index);
@@ -20,9 +23,7 @@ function Board(){
                 setRole(await getPlayerGameInfo());
                 setCards(result.cards);
             } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
+                navigate('/');
             }
         };
 
@@ -39,8 +40,7 @@ function Board(){
         return data.role;
     }
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>Error: {error}</div>;
+    if (loading) return <div>Loading board...</div>
 
     return (
         <div className="board">
