@@ -8,6 +8,7 @@ import TeamJoin from "./TeamJoin.jsx";
 import JoinGame from "./JoinGame.jsx";
 import apiCall from "./API/api.js";
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import ChooseTeam from "./ChooseTeam.jsx";
 
 
 function App() {
@@ -38,8 +39,7 @@ function App() {
         <Routes>
             <Route path="/teamjoin" element={
                 <div className="container">
-                    <TeamJoin team="RED"/>
-                    <TeamJoin team="BLUE"/>
+                    <ChooseTeam />
                 </div>
             }/>
             <Route path="/" element={

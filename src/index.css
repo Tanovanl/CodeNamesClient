@@ -229,3 +229,22 @@ header p {
   align-items: center;
 }
 
+.container-teamjoin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container-teamjoin h1 {
+    font-size: 3em;
+    margin: 0;
+    display: block;
+    order: -1;
+}
+
+.teams {
+  display: flex;
+  gap: 20px;
+}
+
