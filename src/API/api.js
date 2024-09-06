@@ -1,7 +1,7 @@
 const BASE_URL = 'http://194.15.36.221:8080';
 const LOCAL_BASE_URL = 'http://localhost:8080';
 
-const apiCall = async (endpoint, method = 'GET', body = null, headers = {}) => {
+export const apiCall = async (endpoint, method = 'GET', body = null, headers = {}) => {
     const url = `${LOCAL_BASE_URL}${endpoint}`;
 
     const options = {
