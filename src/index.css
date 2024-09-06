@@ -236,15 +236,42 @@ header p {
   align-items: center;
 }
 
-.container-teamjoin h1 {
+.homescreen  h1 {
     font-size: 3em;
-    margin: 2em;
+    margin: 0.2em;
     display: block;
     order: -1;
 }
 
 .teams {
   display: flex;
+  gap: 10px;
+}
+
+.homescreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.homescreen .joinAGame {
+  background: #ee7c2a;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.homescreen {
+  max-width: 70%;
+
+  padding: 5px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 

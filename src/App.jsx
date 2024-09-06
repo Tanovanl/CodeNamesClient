@@ -3,6 +3,7 @@ import Host from "./Host.jsx";
 import JoinGame from "./JoinGame.jsx";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import ChooseTeam from "./ChooseTeam.jsx";
+import HomeScreen from "./HomeScreen.jsx";
 
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
             }/>
             <Route path="/" element={
                 <div className="container">
-                    <Host/>
-                    <JoinGame />
+                    <HomeScreen/>
+
                 </div>
             } />
         </Routes>
