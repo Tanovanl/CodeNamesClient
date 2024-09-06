@@ -1,8 +1,10 @@
 import apiCall from './API/api';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function JoinGame(){
-
+    const navigate = useNavigate();
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -25,13 +27,22 @@ function JoinGame(){
         fetchData();
     }, []);
 
-    const joinGame = async (gameId) => {
-        const url = `/game/${gameId}/player/${playerName}`;
+    const joinGame = async (gameId2) => {
+        const url = `/game/${gameId2}/player/${playerName}`;
         console.log(url);
         const data = await apiCall(url, "POST");
         localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
         localStorage.setItem('playerName', JSON.stringify(data.playerName));
-        history.push('/teamjoin');
+
+        const gameId = JSON.parse(localStorage.getItem('gameId'));
+        if (gameId) {
+            try {
+                await apiCall(`/game/${gameId}`, "GET");
+                navigate('/teamjoin'); // navigate to team join screen
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
 
     if (loading) return <div id="join-div" className="card"> <div>Loading...</div> </div>

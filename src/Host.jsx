@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import apiCall from './API/api';
+import { useNavigate } from 'react-router-dom';
+
 
 function Host(){
+    const navigate = useNavigate();
     const [prefix, setPrefix] = useState('');
     const [gameName, setGameName] = useState('');
     const [playerName, setPlayerName] = useState('');
@@ -14,7 +17,16 @@ function Host(){
 
         localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
         localStorage.setItem('playerName', JSON.stringify(data.playerName));
-        history.push('/teamjoin');
+
+        const gameId = JSON.parse(localStorage.getItem('gameId'));
+        if (gameId) {
+            try {
+                await apiCall(`/game/${gameId}`, "GET");
+                navigate('/teamjoin');
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
 
     return (
