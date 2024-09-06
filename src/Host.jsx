@@ -14,6 +14,7 @@ function Host(){
 
         localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
         localStorage.setItem('playerName', JSON.stringify(data.playerName));
+        history.push('/teamjoin');
     }
 
     return (

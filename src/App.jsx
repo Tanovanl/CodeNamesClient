@@ -7,8 +7,11 @@ import Host from "./Host.jsx";
 import TeamJoin from "./TeamJoin.jsx";
 import JoinGame from "./JoinGame.jsx";
 import apiCall from "./API/api.js";
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
 
 function App() {
+    const navigate = useNavigate();
     const [gameExists, setGameExists] = useState(false);
 
     useEffect(() => {
@@ -18,6 +21,7 @@ function App() {
                 try {
                     await apiCall(`/game/${gameId}`, "GET");
                     setGameExists(true);
+                    navigate('/teamjoin'); // navigate to team join screen
                 } catch (error) {
                     setGameExists(false);
                 }
@@ -29,22 +33,22 @@ function App() {
         const intervalId = setInterval(checkGame, 1000);
 
         return () => clearInterval(intervalId);
-    }, []);
-
+    }, [navigate]);
     return (
-        <>
-            {gameExists ? (
+        <Routes>
+            <Route path="/teamjoin" element={
                 <div className="container">
-                    <TeamJoin team="RED" />
-                    <TeamJoin team="BLUE" />
+                    <TeamJoin team="RED"/>
+                    <TeamJoin team="BLUE"/>
                 </div>
-            ) : (
+            }/>
+            <Route path="/" element={
                 <div className="container">
-                    <Host />
+                    <Host/>
                     <JoinGame />
                 </div>
-            )}
-        </>
+            } />
+        </Routes>
     );
 }
 

@@ -31,6 +31,7 @@ function JoinGame(){
         const data = await apiCall(url, "POST");
         localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
         localStorage.setItem('playerName', JSON.stringify(data.playerName));
+        history.push('/teamjoin');
     }
 
     if (loading) return <div id="join-div" className="card"> <div>Loading...</div> </div>
