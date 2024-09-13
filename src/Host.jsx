@@ -10,8 +10,14 @@ function Host(){
     const [playerName, setPlayerName] = useState('');
 
     const hostGame = async () => {
-        const url = `/game?prefix=${prefix}&gameName=${gameName}&player=${playerName}`;
-        const data = await apiCall(url, "POST");
+        const url = `/game`;
+        const body = {
+            "prefix": prefix,
+            "gameName": gameName,
+            "player": playerName
+        };
+
+        const data = await apiCall(url, "POST", body);
         localStorage.removeItem('gameId');
         localStorage.removeItem('playerName');
 
