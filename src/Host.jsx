@@ -40,13 +40,13 @@ function Host(){
             <h2>Host a game</h2>
             <form action="#" className="host-form" onSubmit={(e) => { e.preventDefault(); hostGame(); }}>
                 <label htmlFor="prefix">Prefix</label>
-                <input type="text" id="prefix" value={prefix} onChange={(e) => setPrefix(e.target.value)}/>
+                <input type="text" id="prefix" required value={prefix} onChange={(e) => setPrefix(e.target.value)}/>
 
                 <label htmlFor="gameName">Game Name</label>
-                <input type="text" id="gameName" value={gameName} onChange={(e) => setGameName(e.target.value)}/>
+                <input type="text" id="gameName" required value={gameName} onChange={(e) => setGameName(e.target.value)}/>
 
                 <label htmlFor="playerName">Player Name</label>
-                <input type="text" id="playerName" value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
+                <input type="text" id="playerName" required value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
 
                 <button id="host-button" type="submit">Host</button>
             </form>

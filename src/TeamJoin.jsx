@@ -33,9 +33,16 @@ function TeamJoin(props) {
         event.preventDefault();
         const gameId = JSON.parse(localStorage.getItem('gameId'));
         const playerName = JSON.parse(localStorage.getItem('playerName'));
-        await apiCall(`/game/${gameId}/player/${playerName}/team/${props.team.toUpperCase()}`, 'POST');
-        await apiCall(`/game/${gameId}/player/${playerName}/role/${role.toUpperCase()}`, 'POST');
-        fetchPlayers();
+
+        const body = {
+            "team": props.team.toUpperCase(),
+            "role": role.toUpperCase(),
+            "player": playerName
+        }
+
+        await apiCall(`/game/${gameId}/player/team`, "POST", body);
+
+        await fetchPlayers();
     };
 
     if (isLoading) {
