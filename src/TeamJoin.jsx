@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import apiCall from './API/api';
+import { useNavigate } from 'react-router-dom';
 
 function TeamJoin(props) {
     const [redOperative, setRedOperative] = useState('');
@@ -7,9 +8,11 @@ function TeamJoin(props) {
     const [blueOperative, setBlueOperative] = useState('');
     const [blueSpyMaster, setBlueSpyMaster] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const gameId = JSON.parse(localStorage.getItem('gameId'));
+    const navigate = useNavigate();
+
 
     const fetchPlayers = async () => {
-        const gameId = JSON.parse(localStorage.getItem('gameId'));
         let players = await apiCall(`/game/${gameId}`);
         players = players.players;
         const redOperativeFind = players.find(player => player.team === 'RED' && player.role === 'OPERATIVE');
@@ -23,10 +26,23 @@ function TeamJoin(props) {
         setIsLoading(false);
     };
 
+    const checkIfGameStarted = async () => {
+        const gameId = JSON.parse(localStorage.getItem('gameId'));
+        const game = await apiCall(`/game/${gameId}`);
+        if (game.isStarted === true) {
+            localStorage.setItem('gameStatus', JSON.stringify('IN_PROGRESS'));
+            navigate('/game');
+        }
+    }
+
     useEffect(() => {
         fetchPlayers();
-        const intervalId = setInterval(fetchPlayers, 1000);
-        return () => clearInterval(intervalId);
+        const fetchPlayersIntervalId = setInterval(fetchPlayers, 1000);
+        const checkGameStartedIntervalId = setInterval(checkIfGameStarted, 1000);
+        return () => {
+            clearInterval(fetchPlayersIntervalId);
+            clearInterval(checkGameStartedIntervalId);
+        };
     }, []);
 
     const handleButtonClick = async (role, event) => {
