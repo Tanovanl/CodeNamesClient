@@ -24,7 +24,8 @@ a:hover {
 
 body {
   margin: 0;
-  background: url("./assets/bg_colorful.jpg");
+  background: url("./assets/bg_colorful.jpg") no-repeat center center fixed;
+  background-size: cover;
   min-width: 320px;
   min-height: 100vh;
   max-height: 100vh;
@@ -308,4 +309,61 @@ header p {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #000000;
+}
+
+.scoreboard-container {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreboard {
+  display: flex;
+  background-color: #1a1a1a;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 90vh;
+  max-width: fit-content;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px auto;
+  border: #1a1a1a 4px solid;
+}
+
+.board {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.score-card {
+    background-color: #c3c3c3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width:  80%;
+    max-height: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.score-card.BLUE {
+  color: #646cff;
+}
+
+.score-card.RED {
+  color: #ff6464;
 }

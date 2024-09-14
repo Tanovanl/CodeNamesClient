@@ -5,7 +5,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import ChooseTeam from "./ChooseTeam.jsx";
 import HomeScreen from "./HomeScreen.jsx";
 import Board from "./Board.jsx";
-import SpyMasterHint from "./SpyMasterHint.jsx";
+import Scoreboard from "./Scoreboard.jsx";
+
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
             <Route path="/game" element={
                 <div className="container">
                     <Board/>
-                    <SpyMasterHint/>
+                    <Scoreboard/>
                 </div>
 
             }/>

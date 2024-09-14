@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import apiCall from './API/api';
 
 function SpyMasterHint() {
+    //TODO: Only visible to Spymaster on turn
     const [hint, setHint] = useState('');
     const gameId = JSON.parse(localStorage.getItem('gameId'));
 
