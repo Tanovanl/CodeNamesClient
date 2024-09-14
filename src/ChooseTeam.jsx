@@ -20,7 +20,19 @@ function ChooseTeam (){
             const result = await apiCall(url, "GET");
             setIsLeader(result.isLeader);
         }
+
+        const fetchIsStartable = async () => {
+            const gameId = JSON.parse(localStorage.getItem('gameId'));
+            const url = `/game/${gameId}`;
+            const result = await apiCall(url, "GET");
+            setIsStartable(result.isStartable);
+        }
+        fetchIsStartable();
         fetchIsLeader();
+
+        const intervalId = setInterval(fetchIsStartable, 1000);
+
+        return () => clearInterval(intervalId);
     });
 
     return (

@@ -28,9 +28,13 @@ function JoinGame(){
     }, []);
 
     const joinGame = async (gameId2) => {
-        const url = `/game/${gameId2}/player/${playerName}`;
-        console.log(url);
-        const data = await apiCall(url, "POST");
+        const url = `/game/${gameId2}/join`;
+        const body = {
+            "player": playerName
+        }
+
+
+        const data = await apiCall(url, "POST", body);
         localStorage.setItem('gameId', JSON.stringify(data.game.gameId));
         localStorage.setItem('playerName', JSON.stringify(data.playerName));
 

@@ -8,10 +8,13 @@ function LeaveGame() {
     const leaveGame = async () => {
         const gameId = JSON.parse(localStorage.getItem('gameId'));
         const playerName = JSON.parse(localStorage.getItem('playerName'));
-        const url = `/game/${gameId}/player/${playerName}`;
+        const url = `/game/{gameId}/player/leave`;
+        const body = {
+            "player": playerName
+        }
 
         try {
-            await apiCall(url, 'DELETE');
+            await apiCall(url, 'DELETE', body);
         } catch (error) {
             console.error('Failed to leave game:', error);
         }
