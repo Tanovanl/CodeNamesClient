@@ -284,3 +284,28 @@ header p {
   background: #e5cdbb;
 }
 
+.hint-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hint-container button {
+  padding: 10px 20px;
+  background-color: #202149;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hint-container button:hover {
+  background-color: #242875;
+}
+
+.hint-container input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}

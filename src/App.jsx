@@ -5,13 +5,18 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import ChooseTeam from "./ChooseTeam.jsx";
 import HomeScreen from "./HomeScreen.jsx";
 import Board from "./Board.jsx";
+import SpyMasterHint from "./SpyMasterHint.jsx";
 
 
 function App() {
     return (
         <Routes>
             <Route path="/game" element={
-                <Board/>
+                <div className="container">
+                    <Board/>
+                    <SpyMasterHint/>
+                </div>
+
             }/>
             <Route path="/teamjoin" element={
                 <div className="container">

@@ -24,7 +24,7 @@ function Board(){
                 console.log(result);
                 setRole(await getPlayerGameInfo());
                 setCards(result.cards);
-                setLoading(false); 
+                setLoading(false);
             } catch (error) {
                 setError(error);
                 setLoading(false);
