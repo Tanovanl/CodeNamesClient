@@ -11,6 +11,8 @@ function Board(){
     const [cards, setCards] = useState([]);
     const [selectedCard, setSelectedCard] = useState(null); // Add this line
     const navigate = useNavigate();
+    const gameId = localStorage.getItem('gameId');
+    const playerName = localStorage.getItem('playerName');
 
     const selectCard = (index) => {
         setSelectedCard(index);
@@ -19,11 +21,11 @@ function Board(){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await apiCall('/game/tano4-tanogame2', "GET");
+                await apiCall(`/game/${gameId}`, "GET");
                 setRole(await getPlayerGameInfo());
                 setCards(result.cards);
             } catch (error) {
-                navigate('/');
+
             }
         };
 
