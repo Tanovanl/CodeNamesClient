@@ -6,6 +6,7 @@ import ChooseTeam from "./ChooseTeam.jsx";
 import HomeScreen from "./HomeScreen.jsx";
 import Board from "./Board.jsx";
 import Scoreboard from "./Scoreboard.jsx";
+import Role from "./Role.jsx";
 
 
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
             <Route path="/game" element={
                 <div className="container">
+
                     <Board/>
                     <Scoreboard/>
                 </div>

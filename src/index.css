@@ -367,3 +367,21 @@ header p {
 .score-card.RED {
   color: #ff6464;
 }
+
+.role-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.hint-container.hidden {
+  display: none;
+}
+
+.hint-container .disabled-button {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
