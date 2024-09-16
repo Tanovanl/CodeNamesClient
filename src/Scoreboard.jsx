@@ -4,6 +4,7 @@ import SpyMasterHint from "./SpyMasterHint.jsx";
 import ScoreCard from "./ScoreCard.jsx";
 import Role from "./Role.jsx";
 import apiCall from "./API/api.js";
+import Guess from "./Guess.jsx";
 
 function Scoreboard() {
     const [role, setRole] = useState('');
@@ -31,7 +32,8 @@ function Scoreboard() {
                     <ScoreCard team="RED"/>
                 </div>
                 <CurrentHint/>
-                {role === 'SPYMASTER' && <SpyMasterHint/>}
+
+                {role === 'SPYMASTER' ? <SpyMasterHint/> : <Guess/>}
                 <Role/>
             </div>
         </div>

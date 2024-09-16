@@ -1,6 +1,12 @@
-function Card({ word, color, revealed, selected, selectCard }) {
+import React from 'react';
+import { useContext } from 'react';
+import { CardContext } from './CardProvider.jsx';
+
+function Card({ word, color, revealed, selected }) {
+    const { setCardName } = useContext(CardContext);
+
     const handleClick = () => {
-        selectCard();
+        setCardName(word);
     };
 
     return (

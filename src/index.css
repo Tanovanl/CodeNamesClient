@@ -385,3 +385,11 @@ header p {
   color: #666666;
   cursor: not-allowed;
 }
+
+.role-container .BLUE, .hint-container .BLUE{
+    color: #646cff;
+}
+
+.role-container .RED,  .hint-container .RED{
+    color: #ff6464;
+}

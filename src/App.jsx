@@ -7,6 +7,7 @@ import HomeScreen from "./HomeScreen.jsx";
 import Board from "./Board.jsx";
 import Scoreboard from "./Scoreboard.jsx";
 import Role from "./Role.jsx";
+import {CardProvider} from "./CardProvider.jsx";
 
 
 
@@ -15,9 +16,10 @@ function App() {
         <Routes>
             <Route path="/game" element={
                 <div className="container">
-
-                    <Board/>
-                    <Scoreboard/>
+                    <CardProvider>
+                        <Board/>
+                        <Scoreboard/>
+                    </CardProvider>
                 </div>
 
             }/>

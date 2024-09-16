@@ -3,6 +3,7 @@ import apiCall from './API/api';
 
 function Role() {
     const [role, setRole] = useState('');
+    const [team, setTeam] = useState('');
     const gameId = JSON.parse(localStorage.getItem('gameId'));
     const playerName = JSON.parse(localStorage.getItem('playerName'));
 
@@ -11,6 +12,7 @@ function Role() {
             try {
                 const response = await apiCall(`/game/${gameId}/player/${playerName}`, 'GET');
                 setRole(response.role);
+                setTeam(response.team);
             } catch (error) {
                 console.error('Error fetching role:', error);
             }
@@ -21,7 +23,7 @@ function Role() {
 
     return (
         <div className="role-container">
-            <p>Role: {role}</p>
+            <p className={team}>Role: {role}</p>
         </div>
     );
 }

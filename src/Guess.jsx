@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import apiCall from './API/api';
-import {Route} from "react-router-dom";
+import { useContext } from 'react';
+import { CardContext } from './CardProvider';
 
-function SpyMasterHint() {
-    const [hint, setHint] = useState('');
-    const [number, setNumber] = useState('');
+function Guess() {
+    const { cardName } = useContext(CardContext);
     const [turn, setTurn] = useState('');
     const [hintWord, setHintWord] = useState(null);
     const [team, setTeam] = useState('');
     const gameId = JSON.parse(localStorage.getItem('gameId'));
     const playerName = JSON.parse(localStorage.getItem('playerName'));
+
 
     useEffect(() => {
         const fetchGameState = async () => {
@@ -37,68 +38,32 @@ function SpyMasterHint() {
         return () => clearInterval(intervalId);
     }, [gameId, playerName]);
 
-    const handleInputChange = (event) => {
-        setHint(event.target.value);
-    };
-
-    const handleNumberChange = (event) => {
-        setNumber(event.target.value);
-    }
-
-    const sendHint = async () => {
-        if (hint.trim().includes(' ')) {
-            alert('Hint can only be one word.');
-            return;
-        }
-        if (number <= 0 || number === '') {
-            alert('Number of cards must be greater than 0.');
-            return;
-        }
-
-        const url = `/game/${gameId}/hint`;
+    const sendGuess = async () => {
+        const url = `/game/${gameId}`;
         const body = {
-            hintWord: hint,
             playerName: playerName,
-            hintNumber: number
+            cardName: cardName
         };
-
         try {
             await apiCall(url, 'POST', body);
-            setHint('');
         } catch (error) {
             console.error('Error sending hint:', error);
         }
     };
 
-
-    const isButtonDisabled = hintWord !== null || turn !== team;
-
+    const isButtonDisabled = hintWord === null || turn !== team;
 
     return (
         <div className="hint-container">
-            <input
-                type="text"
-                value={hint}
-                onChange={handleInputChange}
-                placeholder="Enter your hint"
-                disabled={isButtonDisabled}
-            />
-            <input
-                type="number"
-                disabled={isButtonDisabled}
-                onChange={handleNumberChange}
-                placeholder="Enter number of cards"
-            />
-
             <button
-                onClick={sendHint}
+                onClick={sendGuess}
                 disabled={isButtonDisabled}
                 className={isButtonDisabled ? 'disabled-button' : 'active-button'}
             >
-                {isButtonDisabled ? 'Not your turn to give a hint' : 'Send Hint'}
+                {isButtonDisabled ? 'Not your turn to guess' : 'Guess current selected card'}
             </button>
         </div>
     );
 }
 
-export default SpyMasterHint;
+export default Guess;
