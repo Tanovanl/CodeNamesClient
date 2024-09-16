@@ -8,6 +8,7 @@ import Board from "./Board.jsx";
 import Scoreboard from "./Scoreboard.jsx";
 import Role from "./Role.jsx";
 import {CardProvider} from "./CardProvider.jsx";
+import Winner from "./Winner.jsx";
 
 
 
@@ -33,6 +34,12 @@ function App() {
                     <HomeScreen/>
                 </div>
             } />
+            <Route path="/winner" element={
+                <div className="container">
+                    <Winner/>
+                </div>
+            }/>
+
         </Routes>
     );
 }

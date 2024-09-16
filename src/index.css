@@ -325,15 +325,13 @@ header p {
 
 .scoreboard {
   display: flex;
-  background-color: #1a1a1a;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  height: 90vh;
-  max-width: fit-content;
+  background-color: #1a1a1a;
   border-radius: 10px;
   padding: 20px;
-  margin: 10px auto;
+  margin: 10px;
   border: #1a1a1a 4px solid;
 }
 
@@ -347,25 +345,30 @@ header p {
   gap: 20px;
 }
 
+
+
 .score-card {
     background-color: #c3c3c3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    max-width:  80%;
+    width:  80%;
     max-height: fit-content;
     border-radius: 10px;
     padding: 20px;
     margin: 10px;
 }
 
+.score-card {
+   color: white;
+}
+
 .score-card.BLUE {
-  color: #646cff;
+  background-color: #646cff;
 }
 
 .score-card.RED {
-  color: #ff6464;
+  background-color: #ff6464;
 }
 
 .role-container {
@@ -386,6 +389,10 @@ header p {
   cursor: not-allowed;
 }
 
+.hint-container {
+    text-align: center;
+}
+
 .role-container .BLUE, .hint-container .BLUE{
     color: #646cff;
 }
@@ -393,3 +400,12 @@ header p {
 .role-container .RED,  .hint-container .RED{
     color: #ff6464;
 }
+
+.winner {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000000;
+  align-items: center;
+}
+
+

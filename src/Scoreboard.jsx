@@ -27,10 +27,10 @@ function Scoreboard() {
     return (
         <div className="scoreboard-container">
             <div className="scoreboard">
-                <div className="teamStats">
+
                     <ScoreCard team="BLUE"/>
                     <ScoreCard team="RED"/>
-                </div>
+
                 <CurrentHint/>
 
                 {role === 'SPYMASTER' ? <SpyMasterHint/> : <Guess/>}

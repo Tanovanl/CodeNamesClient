@@ -9,6 +9,7 @@ function Board(){
     const [error, setError] = useState(null);
     const [cards, setCards] = useState([]);
     const [selectedCard, setSelectedCard] = useState(null);
+    const [winner, setWinner] = useState(null);
     const navigate = useNavigate();
     const gameId = JSON.parse(localStorage.getItem('gameId'));
     const playerName = JSON.parse(localStorage.getItem('playerName'));
@@ -23,6 +24,10 @@ function Board(){
                 const result = await apiCall(`/game/${gameId}`, "GET");
                 console.log(result);
                 setRole(await getPlayerGameInfo());
+                if (result.winner) {
+                    setWinner(result.winner);
+                    navigate('/winner', {state: {winner: result.winner}});
+                }
                 setCards(result.cards);
                 setLoading(false);
             } catch (error) {

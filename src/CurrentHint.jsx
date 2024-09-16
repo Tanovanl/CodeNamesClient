@@ -3,7 +3,7 @@ import apiCall from './API/api';
 
 function CurrentHint() {
     const [hint, setHint] = useState("Some hint");
-    const [numberHint, setNumberHint] = useState(0);
+    const [numberHint, setNumberHint] = useState("");
     const [colorHint, setColorHint] = useState("BLUE/RED");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -31,7 +31,7 @@ function CurrentHint() {
 
     return (
         <div className="hint-container">
-            <h3 className={colorHint}>{colorHint}</h3>
+            <h5 className={colorHint}>Current hint for: {colorHint}</h5>
             <p>{hint} {numberHint}</p>
         </div>
     );
